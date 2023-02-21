@@ -24,6 +24,9 @@ type Game struct {
 
 func (g *Game) Update() error {
 	g.playerPostX += 1;
+	if g.playerPostX >= float64(SCREEN_WIDTH) - 30 {
+		g.playerPostX = float64(SCREEN_WIDTH) - 30; 
+	}
 	return nil;
 }
 
