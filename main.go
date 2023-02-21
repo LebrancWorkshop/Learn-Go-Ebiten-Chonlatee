@@ -1,11 +1,12 @@
 package main
 
 import (
-	"log"
 	_ "image/png"
+	"log"
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
 const (
@@ -13,6 +14,9 @@ const (
 	HEIGHT = 480;
 	SCREEN_WIDTH = 640;
 	SCREEN_HEIGHT = 480;
+	PLAYER_WIDTH = 50;
+	PLAYER_HEIGHT = 80;
+	PLAYER_SPEED = 3;
 	TITLE = "Ebiten Go Workshop | Chonlatee"
 )
 
@@ -23,10 +27,13 @@ type Game struct {
 }
 
 func (g *Game) Update() error {
-	g.playerPostX += 1;
-	if g.playerPostX >= float64(SCREEN_WIDTH) - 30 {
-		g.playerPostX = float64(SCREEN_WIDTH) - 30; 
-	}
+
+	// Keyboard Function - COMING SOON. 
+
+	// g.playerPostX += 1;
+	// if g.playerPostX + float64(PLAYER_WIDTH) >= float64(SCREEN_WIDTH) {
+	// 	g.playerPostX = float64(SCREEN_WIDTH) - float64(PLAYER_WIDTH); 
+	// }
 	return nil;
 }
 
@@ -51,7 +58,7 @@ func main() {
 	}
 
 	game.player = img;
-	game.playerPostX = float64(SCREEN_WIDTH / 2) - 25;
+	game.playerPostX = float64(SCREEN_WIDTH / 2) - float64(PLAYER_WIDTH / 2);
 	game.playerPostY = float64(SCREEN_HEIGHT / 2);
 
 	err = ebiten.RunGame(game);
